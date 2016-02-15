@@ -1,6 +1,6 @@
 Run the following in your terminal at the root of the repo. 
 
-```{r, engine='bash', count_lines}
+```bash
 npm install
 bower install
 gulp dev
