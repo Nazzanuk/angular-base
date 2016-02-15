@@ -1,0 +1,34 @@
+header-item {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    line-height: 50px;
+
+    background: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+
+    .header-menu {
+      float: right;
+
+      .menu-item {
+        float: left;
+        line-height: 48px;
+        padding: 0 20px;
+        border-bottom: 2px solid white;
+        transition: .3s;
+        cursor: pointer;
+
+        &:hover {
+          border-bottom: 2px solid #ccc;
+        }
+
+        &.active {
+          border-bottom: 2px solid $primary;
+        }
+      }
+    }
+  }
+}

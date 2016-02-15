@@ -1,0 +1,17 @@
+<script type="text/ng-template" id="header.html">
+    <div class="header">
+        <div class="container">
+            <strong>Angular Base</strong>
+
+            <div class="header-menu">
+                <div class="menu-item"
+                     ng-repeat="page in header.getPages()"
+                     ng-click="header.setPage(page.slug)"
+                     ng-class="{active:header.isCurrentPage(page.slug)}"
+                >{{page.name}}</div>
+            </div>
+        </div>
+
+
+    </div>
+</script>

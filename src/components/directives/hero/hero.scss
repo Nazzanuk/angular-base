@@ -1,0 +1,31 @@
+hero-item {
+  .hero {
+    .hero-banner {
+      height: 300px;
+      position: relative;
+      background: #eee;
+      background-size: cover;
+      background-position: center;
+
+      .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+
+        display: flex;
+        text-align: center;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        color: white;
+
+        font-size: 50px;
+        font-weight: 100;
+      }
+    }
+  }
+}

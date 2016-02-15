@@ -1,0 +1,49 @@
+$body: #212121;
+$primary: #0091de;
+$secondary: #454545;
+
+html, body {
+  font-family: 'Source Sans Pro', sans-serif;
+  overflow-x: hidden;
+  background: rgb(244, 244, 244);
+}
+
+input, textarea {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+  min-width: 320px;
+}
+
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 990px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 991px) {
+    @content;
+  }
+}
+
+.fa {
+  line-height: inherit;
+}
+
+[screen] {
+  opacity: 0;
+  padding-top: 50px;
+  transition: .3s;
+
+  &.active {
+    opacity: 1;
+  }
+}
