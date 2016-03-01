@@ -14,23 +14,30 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 
     // Now set up the states
     $stateProvider
-        .state('home', {
+        .state('splash', {
             url: "/",
+            templateUrl: "splash-screen.html",
+            resolve
+        })
+        .state('home', {
+            url: "/home",
             templateUrl: "home-screen.html",
+            controller:'HomeScreen',
             resolve
         })
-        .state('about', {
-            url: "/about",
-            templateUrl: "about-screen.html",
+        .state('job', {
+            url: "/job/:id",
+            templateUrl: "job-screen.html",
+            controller:'JobScreen',
             resolve
         })
-        .state('other', {
-            url: "/other",
-            templateUrl: "other-screen.html",
-            //controller: "BootcampScreen",
+        .state('verify', {
+            url: "/verify/:id",
+            templateUrl: "verify-screen.html",
+            controller:'VerifyScreen',
             resolve
         });
 
     //use real urls instead of hashes
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 });

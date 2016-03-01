@@ -1,17 +1,35 @@
 header-item {
   .header {
     position: fixed;
-    top: 0;
+    top: -60px;
     left: 0;
     right: 0;
     height: 50px;
     line-height: 50px;
+    z-index: 100;
 
-    background: white;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    //background: white;
+    background: rgba(0, 0, 0, 0.1);
+    //box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: .6s ease-out;
+    color: white;
+
+    &.active {
+      top: 0;
+    }
+
+    .back-arrow {
+      font-size: 20px;
+      cursor: pointer;
+      width: 45px;
+      text-align: center;
+      margin-left: -15px;
+    }
 
     .header-menu {
-      float: right;
+      position: absolute;
+      right: 0;
+      top: 0;
 
       .menu-item {
         float: left;
@@ -26,7 +44,7 @@ header-item {
         }
 
         &.active {
-          border-bottom: 2px solid $primary;
+          border-bottom: 2px solid $body;
         }
       }
     }

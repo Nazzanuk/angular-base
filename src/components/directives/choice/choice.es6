@@ -1,7 +1,8 @@
-app.component('heroItem', {
-    templateUrl: 'hero.html',
-    controllerAs: 'hero',
+app.component('choiceItem', {
+    templateUrl: 'choice.html',
+    controllerAs: 'choice',
     bindings: {
+        jobId: '@',
         img: '@',
         heading: '@',
         subheading: '@'

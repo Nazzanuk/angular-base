@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router']);
+var app = angular.module('app', ['ui.router', 'ngTouch']);
 
 app.directive('ngEnter', () => (scope, element, attrs) => {
     element.bind('keypress', (event) => {

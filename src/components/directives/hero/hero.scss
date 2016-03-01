@@ -3,9 +3,10 @@ hero-item {
     .hero-banner {
       height: 300px;
       position: relative;
-      background: #eee;
+      background: linear-gradient(45deg, $primary 0%, $secondary 100%);
       background-size: cover;
       background-position: center;
+      //box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
       .banner-overlay {
         position: absolute;
@@ -13,7 +14,7 @@ hero-item {
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.4);
+        //background: rgba(0, 0, 0, 0.2);
 
         display: flex;
         text-align: center;
@@ -22,9 +23,35 @@ hero-item {
         align-items: center;
         justify-items: center;
         color: white;
+        flex-direction: column;
 
-        font-size: 50px;
+        font-size: 30px;
         font-weight: 100;
+
+        .sub {
+          font-size: 12px;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+
+        img {
+          width: 100px;
+          height: 100px;
+          border-radius: 150px;
+          margin-top: 50px;
+          margin-bottom: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.6);
+          background: white;
+        }
+      }
+
+      &.small {
+        height: 150px;
+        //background: $primary;
+
+        .banner-overlay {
+          padding-top: 30px;
+        }
       }
     }
   }
