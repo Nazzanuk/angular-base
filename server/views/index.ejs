@@ -29,25 +29,6 @@
 <div ui-view></div>
 
 
-<script type="text/ng-template" id="splash.html">
-    <div class="splash" ng-class="{active:splash.isActive()}">
-        <div class="splash-header">
-            <img src="public/svg/pen.svg" alt="" style="height: 60px;">
-            Insignio</div>
-        <div class="splash-form">
-            <div class="form-label">
-                <input type="text" class="form-input" placeholder="Your Email">
-                <div class="form-line"></div>
-                <input type="password" class="form-input" placeholder="Your Password">
-
-                <div class="form-btn" ui-sref="home">Login</div>
-
-                <div class="form-forgot">Forgot Password?</div>
-
-            </div>
-        </div>
-    </div>
-</script>
 <script type="text/ng-template" id="choice.html">
     <div class="choice">
         <div class="container">
@@ -103,7 +84,7 @@
                 <div class="list-item">
                     <div class="item-content">
                         <img src="public/svg/phone-call.svg" alt="">
-                        Call
+                        Call Candidate
                     </div>
                 </div>
             </div>
@@ -111,30 +92,23 @@
 
     </div>
 </script>
-<script type="text/ng-template" id="header.html">
-    <div class="header" ng-class="{active:header.isVisible()}">
-        <div class="container" style="text-align: center">
-            <i class="fa fa-angle-left pull-left back-arrow" onclick="javascript:history.back();"
-            ></i>
+<script type="text/ng-template" id="splash.html">
+    <div class="splash" ng-class="{active:splash.isActive()}">
+        <div class="splash-header">
+            <img src="public/svg/pen.svg" alt="" style="height: 60px;">
+            Insignio</div>
+        <div class="splash-form">
+            <div class="form-label">
+                <input type="text" class="form-input" placeholder="Your Email">
+                <div class="form-line"></div>
+                <input type="password" class="form-input" placeholder="Your Password">
 
-            <span ui-sref="home" style="cursor: pointer">
-                <img src="public/svg/pen.svg" alt="" style="height: 20px;margin-right: 10px">
-                Insignio
-            </span>
+                <div class="form-btn" ui-sref="home">Login</div>
 
+                <div class="form-forgot">Forgot Password?</div>
 
-            <i class="fa fa-bars pull-right" style="font-size: 20px;cursor: pointer;"></i>
-
-            <!--<div class="header-menu">-->
-            <!--<div class="menu-item"-->
-            <!--ng-repeat="page in header.getPages()"-->
-            <!--ng-click="header.setPage(page.slug)"-->
-            <!--ng-class="{active:header.isCurrentPage(page.slug)}"-->
-            <!--&gt;{{page.name}}</div>-->
-            <!--</div>-->
+            </div>
         </div>
-
-
     </div>
 </script>
 <script type="text/ng-template" id="documents.html">
@@ -179,6 +153,32 @@
         </div>
     </div>
 </script>
+<script type="text/ng-template" id="header.html">
+    <div class="header" ng-class="{active:header.isVisible()}">
+        <div class="container" style="text-align: center">
+            <i class="fa fa-angle-left pull-left back-arrow" onclick="javascript:history.back();"
+            ></i>
+
+            <span ui-sref="home" style="cursor: pointer">
+                <img src="public/svg/pen.svg" alt="" style="height: 20px;margin-right: 10px">
+                Insignio
+            </span>
+
+
+            <i class="fa fa-bars pull-right" style="font-size: 20px;cursor: pointer;"></i>
+
+            <!--<div class="header-menu">-->
+            <!--<div class="menu-item"-->
+            <!--ng-repeat="page in header.getPages()"-->
+            <!--ng-click="header.setPage(page.slug)"-->
+            <!--ng-class="{active:header.isCurrentPage(page.slug)}"-->
+            <!--&gt;{{page.name}}</div>-->
+            <!--</div>-->
+        </div>
+
+
+    </div>
+</script>
 <script type="text/ng-template" id="hero.html">
     <div class="hero">
         <!--<div class="hero-banner" style="background-image: url('{{hero.img}}')">-->
@@ -190,13 +190,6 @@
             </div>
 
 
-        </div>
-    </div>
-</script>
-<script type="text/ng-template" id="content.html">
-    <div class="content">
-        <div class="container">
-            <div ng-transclude="content"></div>
         </div>
     </div>
 </script>
@@ -225,6 +218,13 @@
                 </div>
 
             </div>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="content.html">
+    <div class="content">
+        <div class="container">
+            <div ng-transclude="content"></div>
         </div>
     </div>
 </script>
@@ -259,6 +259,16 @@
 
             </div>
         </div>
+    </div>
+</script>
+<script type="text/ng-template" id="about-screen.html">
+    <div screen="about">
+
+        <!-- one way pass values to component -->
+        <hero-item
+                img="https://unsplash.it/1200/500/?random&123"
+                heading="About Angular Base"
+        ></hero-item>
     </div>
 </script>
 <script type="text/ng-template" id="verify-id.html">
@@ -296,29 +306,6 @@
     </div>
 
 </script>
-<script type="text/ng-template" id="about-screen.html">
-    <div screen="about">
-
-        <!-- one way pass values to component -->
-        <hero-item
-                img="https://unsplash.it/1200/500/?random&123"
-                heading="About Angular Base"
-        ></hero-item>
-    </div>
-</script>
-<script type="text/ng-template" id="home-screen.html">
-    <div screen="home">
-
-        <hero-item
-                heading="Candidates"
-        ></hero-item>
-
-        <users-item
-                users="getUsers()"
-        ></users-item>
-
-    </div>
-</script>
 <script type="text/ng-template" id="documents-screen.html">
     <div screen="verify">
 
@@ -343,6 +330,19 @@
         </choice-item>
 
 
+
+    </div>
+</script>
+<script type="text/ng-template" id="home-screen.html">
+    <div screen="home">
+
+        <hero-item
+                heading="Candidates"
+        ></hero-item>
+
+        <users-item
+                users="getUsers()"
+        ></users-item>
 
     </div>
 </script>
