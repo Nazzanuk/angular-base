@@ -2,7 +2,7 @@ app.component('choiceItem', {
     templateUrl: 'choice.html',
     controllerAs: 'choice',
     bindings: {
-        jobId: '@',
+        userId: '@',
         img: '@',
         heading: '@',
         subheading: '@'

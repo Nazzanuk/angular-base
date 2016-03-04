@@ -22,19 +22,31 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
         .state('home', {
             url: "/home",
             templateUrl: "home-screen.html",
-            controller:'HomeScreen',
+            controller: 'HomeScreen',
+            resolve
+        })
+        .state('user', {
+            url: "/user/:id",
+            templateUrl: "user-screen.html",
+            controller: 'UserScreen',
+            resolve
+        })
+        .state('documents', {
+            url: "/user/:id/documents",
+            templateUrl: "documents-screen.html",
+            controller: 'DocumentsScreen',
             resolve
         })
         .state('job', {
             url: "/job/:id",
             templateUrl: "job-screen.html",
-            controller:'JobScreen',
+            controller: 'JobScreen',
             resolve
         })
         .state('verify', {
             url: "/verify/:id",
             templateUrl: "verify-screen.html",
-            controller:'VerifyScreen',
+            controller: 'VerifyScreen',
             resolve
         });
 

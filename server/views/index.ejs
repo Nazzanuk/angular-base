@@ -29,17 +29,22 @@
 <div ui-view></div>
 
 
-<script type="text/ng-template" id="hero.html">
-    <div class="hero">
-        <!--<div class="hero-banner" style="background-image: url('{{hero.img}}')">-->
-        <div class="hero-banner" ng-class="{small:!hero.img}">
-            <div class="banner-overlay">
-                <img src="http://patrickbeser.com/img/portrait-2015.jpg" alt="" ng-if="hero.img">
-                {{hero.heading}}
-                <div class="sub" ng-if="hero.subheading">{{hero.subheading}}</div>
+<script type="text/ng-template" id="splash.html">
+    <div class="splash" ng-class="{active:splash.isActive()}">
+        <div class="splash-header">
+            <img src="public/svg/pen.svg" alt="" style="height: 60px;">
+            Insignio</div>
+        <div class="splash-form">
+            <div class="form-label">
+                <input type="text" class="form-input" placeholder="Your Email">
+                <div class="form-line"></div>
+                <input type="password" class="form-input" placeholder="Your Password">
+
+                <div class="form-btn" ui-sref="home">Login</div>
+
+                <div class="form-forgot">Forgot Password?</div>
+
             </div>
-
-
         </div>
     </div>
 </script>
@@ -48,7 +53,7 @@
         <div class="container">
             <div class="choice-list">
                 <div class="list-item">
-                    <div class="item-content">
+                    <div class="item-content" ui-sref="documents({id:choice.userId})">
                         <img src="public/svg/cloud.svg" alt="">
                         ORACLE document repository
                     </div>
@@ -59,7 +64,7 @@
                         Signed documents
                     </div>
                 </div>
-                <div class="list-item" ui-sref="verify({id:choice.jobId})">
+                <div class="list-item" ui-sref="verify({id:choice.userId})">
                     <div class="item-content">
                         <img src="public/svg/verify.svg" alt="">
                         Verify ID
@@ -87,6 +92,18 @@
                     <div class="item-content">
                         <img src="public/svg/skills.svg" alt="">
                         Skills
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="item-content">
+                        <img src="public/svg/link.svg" alt="">
+                        External Services
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="item-content">
+                        <img src="public/svg/phone-call.svg" alt="">
+                        Call
                     </div>
                 </div>
             </div>
@@ -120,22 +137,66 @@
 
     </div>
 </script>
-<script type="text/ng-template" id="splash.html">
-    <div class="splash" ng-class="{active:splash.isActive()}">
-        <div class="splash-header">
-            <img src="public/svg/pen.svg" alt="" style="height: 60px;">
-            Insignio</div>
-        <div class="splash-form">
-            <div class="form-label">
-                <input type="text" class="form-input" placeholder="Your Email">
-                <div class="form-line"></div>
-                <input type="password" class="form-input" placeholder="Your Password">
-
-                <div class="form-btn" ui-sref="home">Login</div>
-
-                <div class="form-forgot">Forgot Password?</div>
+<script type="text/ng-template" id="documents.html">
+    <div class="documents">
+        <div class="container">
+            <div class="documents-upload">
+                <div class="upload-button">
+                    Upload &nbsp; <i class="fa fa-upload fa-2x" style="align-self: flex-end"></i>
+                </div>
 
             </div>
+
+            <div class="documents-list">
+                <div class="doc">
+                    <i class="fa fa-folder"></i>
+                    <div>Company Media</div>
+                </div>
+
+                <div class="doc">
+                    <i class="fa fa-file-text"></i>
+                    <div>CV.pdf</div>
+                </div>
+
+                <div class="doc">
+                    <i class="fa fa-file-text"></i>
+                    <div>Offer Letter.pdf</div>
+                    <div class="signed"><i class="fa fa-check"></i> &nbsp; signed</div>
+                </div>
+
+                <div class="doc">
+                    <i class="fa fa-file-text"></i>
+                    <div>Company Structure.pdf</div>
+                </div>
+                <div class="doc">
+                    <i class="fa fa-play-circle"></i>
+                    <div>Company Intro Video.mpg</div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="hero.html">
+    <div class="hero">
+        <!--<div class="hero-banner" style="background-image: url('{{hero.img}}')">-->
+        <div class="hero-banner" ng-class="{small:!hero.img}">
+            <div class="banner-overlay">
+                <img src="http://patrickbeser.com/img/portrait-2015.jpg" alt="" ng-if="hero.img">
+                {{hero.heading}}
+                <div class="sub" ng-if="hero.subheading">{{hero.subheading}}</div>
+            </div>
+
+
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="content.html">
+    <div class="content">
+        <div class="container">
+            <div ng-transclude="content"></div>
         </div>
     </div>
 </script>
@@ -167,10 +228,36 @@
         </div>
     </div>
 </script>
-<script type="text/ng-template" id="content.html">
-    <div class="content">
+<script type="text/ng-template" id="users.html">
+    <div class="users">
+        <div class="list-title">
+
+            <div class="container">users
+            </div>
+        </div>
+
         <div class="container">
-            <div ng-transclude="content"></div>
+            <div class="users-list">
+                <div class="list-item"
+                     ng-repeat="user in users.users"
+                     ui-sref="user({id:user.id})"
+                >
+                    <div class="list-content">
+                        <div class="content-title">{{user.name}}</div>
+                        <div class="content-subtitle">{{user.job}}</div>
+                    </div>
+                    <div>
+                        <div class="list-icon color-{{user.progress}}" ng-show="user.progress == 0">Not Contacted</div>
+                        <div class="list-icon color-{{user.progress}}" ng-show="user.progress == 1">Interview</div>
+                        <div class="list-icon color-{{user.progress}}" ng-show="user.progress == 2">Pending Response</div>
+                        <div class="list-icon color-{{user.progress}}" ng-show="user.progress == 3">Offer</div>
+                        <div class="list-icon color-{{user.progress}}" ng-show="user.progress == 4">Accepted</div>
+
+                    </div>
+                    <div class="list-arrow"><i class="fa fa-angle-right"></i></div>
+                </div>
+
+            </div>
         </div>
     </div>
 </script>
@@ -209,20 +296,38 @@
     </div>
 
 </script>
-<script type="text/ng-template" id="home-screen.html">
-    <div screen="home">
+<script type="text/ng-template" id="about-screen.html">
+    <div screen="about">
 
         <!-- one way pass values to component -->
         <hero-item
-                img="https://unsplash.it/1200/500/?random"
-                heading="Mark Anderson"
-                subheading="Java Developer"
+                img="https://unsplash.it/1200/500/?random&123"
+                heading="About Angular Base"
+        ></hero-item>
+    </div>
+</script>
+<script type="text/ng-template" id="home-screen.html">
+    <div screen="home">
+
+        <hero-item
+                heading="Candidates"
         ></hero-item>
 
-        <jobs-item
-                jobs="getJobs()"
-        ></jobs-item>
+        <users-item
+                users="getUsers()"
+        ></users-item>
 
+    </div>
+</script>
+<script type="text/ng-template" id="documents-screen.html">
+    <div screen="verify">
+
+        <hero-item
+                heading="Documents"
+                subheading="Powered by Oracle Cloud"
+        ></hero-item>
+
+        <documents-item></documents-item>
     </div>
 </script>
 <script type="text/ng-template" id="job-screen.html">
@@ -241,30 +346,23 @@
 
     </div>
 </script>
-<script type="text/ng-template" id="verify-screen.html">
-    <div screen="verify">
-
-        <hero-item
-                heading="Verify Your ID"
-                subheading=""
-        ></hero-item>
-
-        <verify-id-item></verify-id-item>
-    </div>
-</script>
-<script type="text/ng-template" id="about-screen.html">
-    <div screen="about">
-
-        <!-- one way pass values to component -->
-        <hero-item
-                img="https://unsplash.it/1200/500/?random&123"
-                heading="About Angular Base"
-        ></hero-item>
-    </div>
-</script>
 <script type="text/ng-template" id="splash-screen.html">
     <div screen="splash">
         <splash-item></splash-item>
+
+    </div>
+</script>
+<script type="text/ng-template" id="user-screen.html">
+    <div screen="user">
+
+        <hero-item
+                heading="{{getUser().name}}"
+                subheading="{{getUser().job}}"
+        ></hero-item>
+
+        <choice-item user-id="{{getUser().id}}">
+
+        </choice-item>
 
     </div>
 </script>

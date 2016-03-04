@@ -7,7 +7,7 @@ splash-item {
     right: 0;
     //z-index: -1;
     //background: #4ca3ce;
-    background: linear-gradient(45deg, #4ca3ce 0%, #7cc142 100%);
+    background: linear-gradient(45deg, $primary 0%, $secondary 100%);
 
     display: flex;
     align-content: center;
@@ -44,7 +44,7 @@ splash-item {
       transition: 1.5s;
       transition-delay: 1.0s;
       opacity: 0;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255, 255, 255, 0.8);
       text-align: center;
 
       .form-input {
@@ -60,7 +60,7 @@ splash-item {
         transition: .3s;
 
         &::placeholder {
-          color: rgba(255,255,255,0.8);
+          color: rgba(255, 255, 255, 0.8);
         }
 
         &:hover, &:focus {
@@ -72,21 +72,22 @@ splash-item {
         //width: 100%;
         height: 1px;
         margin: 0 15px;
-        background: rgba(255,255,255,0.8);
+        background: rgba(255, 255, 255, 0.8);
 
       }
 
       .form-btn {
         width: 100%;
         background: white;
-        border-radius: 100px;
+        border-radius: 3px;
         text-align: center;
         margin-top: 30px;
-        color:  #62B18E;
-        font-weight: 600;
+        color: mix($primary, $secondary);
+        font-weight: 900;
         line-height: 50px;
         cursor: pointer;
         transition: .3s;
+        text-transform: uppercase;
 
         &:hover, &:focus {
           transform: scale(1.05);
@@ -110,7 +111,6 @@ splash-item {
         top: 0;
         left: 0;
         opacity: 1;
-
 
         img {
           top: 0;

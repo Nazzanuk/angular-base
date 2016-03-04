@@ -31,11 +31,11 @@ choice-item {
         }
 
         &:nth-child(2n) {
-          background: #f1f8ff;
+          background: #f7f7f7;
         }
 
         &:hover {
-          background: transparentize($primary, 0.8);
+          //background: transparentize($primary, 0.8);
         }
 
         .item-content {
@@ -55,8 +55,14 @@ choice-item {
           font-size: 12px;
           font-weight: 700;
           text-transform: uppercase;
-          color: $primary;
-          //border-bottom: 2px solid $primary;
+          color: #333;
+          border-bottom: 3px solid transparent;
+          transition: .3s;
+
+          &:hover {
+            border-bottom: 3px solid $primary;
+            color: $primary;
+          }
 
           @media (max-width: 450px) {
             font-size: 10px;

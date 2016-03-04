@@ -1,16 +1,13 @@
 <script type="text/ng-template" id="home-screen.html">
     <div screen="home">
 
-        <!-- one way pass values to component -->
         <hero-item
-                img="https://unsplash.it/1200/500/?random"
-                heading="Mark Anderson"
-                subheading="Java Developer"
+                heading="Candidates"
         ></hero-item>
 
-        <jobs-item
-                jobs="getJobs()"
-        ></jobs-item>
+        <users-item
+                users="getUsers()"
+        ></users-item>
 
     </div>
 </script>

@@ -3,7 +3,7 @@
         <div class="container">
             <div class="choice-list">
                 <div class="list-item">
-                    <div class="item-content">
+                    <div class="item-content" ui-sref="documents({id:choice.userId})">
                         <img src="public/svg/cloud.svg" alt="">
                         ORACLE document repository
                     </div>
@@ -14,7 +14,7 @@
                         Signed documents
                     </div>
                 </div>
-                <div class="list-item" ui-sref="verify({id:choice.jobId})">
+                <div class="list-item" ui-sref="verify({id:choice.userId})">
                     <div class="item-content">
                         <img src="public/svg/verify.svg" alt="">
                         Verify ID
@@ -42,6 +42,18 @@
                     <div class="item-content">
                         <img src="public/svg/skills.svg" alt="">
                         Skills
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="item-content">
+                        <img src="public/svg/link.svg" alt="">
+                        External Services
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="item-content">
+                        <img src="public/svg/phone-call.svg" alt="">
+                        Call
                     </div>
                 </div>
             </div>

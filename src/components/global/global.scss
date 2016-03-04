@@ -1,6 +1,6 @@
 $body: #212121;
-$primary: #61A9FC;
-$secondary: #7cc142;
+$primary: #284dd4;
+$secondary: #769e27;
 $light: #EEF7FF;
 
 * {
@@ -11,6 +11,10 @@ $light: #EEF7FF;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased;
 }
 
 html, body {
@@ -19,13 +23,12 @@ html, body {
   //background: $body;
   background: $light;
 
-
 }
 
 input, textarea {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
 
   -webkit-user-select: text;
   -moz-user-select: text;
@@ -36,7 +39,7 @@ input, textarea {
 body {
   min-width: 320px;
   //font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
   background: $light;
 }
 

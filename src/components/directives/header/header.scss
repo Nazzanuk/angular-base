@@ -1,12 +1,13 @@
 header-item {
   .header {
     position: fixed;
-    top: -60px;
+    top: 0;
     left: 0;
     right: 0;
     height: 50px;
     line-height: 50px;
     z-index: 100;
+    transform: translateY(-60px);
 
     //background: white;
     background: rgba(0, 0, 0, 0.1);
@@ -15,7 +16,7 @@ header-item {
     color: white;
 
     &.active {
-      top: 0;
+      transform: translateY(0px);
     }
 
     .back-arrow {

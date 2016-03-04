@@ -1,14 +1,10 @@
-app.controller('VerifyScreen', ($scope, $stateParams, Jobs) => {
+app.controller('DocumentsScreen', ($scope, $stateParams, Jobs) => {
 
     var init = () => {};
 
     init();
 
     _.extend($scope, {
-        getJob: () => Jobs.getJobById($stateParams.id)
+        //getJob: () => Jobs.getJobById($stateParams.id)
     });
-});
-
-app.directive('customOnChange', () => (scope, el, attrs) => {
-    el.bind('change', scope.$eval(attrs.customOnChange));
 });

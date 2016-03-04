@@ -25,6 +25,7 @@ class User {
         this.name = name;
         this.job = job;
         this.email = email;
+        this.progress = _.random(0, 4);
     }
 }
 
