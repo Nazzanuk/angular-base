@@ -14,8 +14,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="public/lib.css?latest"/>
-    <link rel="stylesheet" href="public/app.css?latest"/>
+    <link rel="stylesheet" href="public/lib.css?12345"/>
+    <link rel="stylesheet" href="public/app.css?12345"/>
 
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,300,300italic,600,400italic,600italic,700,700italic,900,900italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 
@@ -24,11 +24,18 @@
 <body data-ng-app="app">
 
 <header-item></header-item>
+<sidebar-item></sidebar-item>
+<alert-item></alert-item>
 
 <!-- screen contents -->
 <div ui-view></div>
 
 
+<script type="text/ng-template" id="alert.html">
+    <div class="alert-msg" ng-class="{active:alert.isActive()}">
+        {{alert.getContent()}}
+    </div>
+</script>
 <script type="text/ng-template" id="choice.html">
     <div class="choice">
         <div class="container">
@@ -39,7 +46,7 @@
                         ORACLE document repository
                     </div>
                 </div>
-                <div class="list-item">
+                <div class="list-item" ui-sref="signedDocs({id:choice.userId})">
                     <div class="item-content">
                         <img src="public/svg/sign-2.svg" alt="">
                         Signed documents
@@ -92,71 +99,25 @@
 
     </div>
 </script>
-<script type="text/ng-template" id="splash.html">
-    <div class="splash" ng-class="{active:splash.isActive()}">
-        <div class="splash-header">
-            <img src="public/svg/pen.svg" alt="" style="height: 60px;">
-            Insignio</div>
-        <div class="splash-form">
-            <div class="form-label">
-                <input type="text" class="form-input" placeholder="Your Email">
-                <div class="form-line"></div>
-                <input type="password" class="form-input" placeholder="Your Password">
-
-                <div class="form-btn" ui-sref="home">Login</div>
-
-                <div class="form-forgot">Forgot Password?</div>
-
-            </div>
-        </div>
-    </div>
-</script>
-<script type="text/ng-template" id="documents.html">
-    <div class="documents">
-        <div class="container">
-            <div class="documents-upload">
-                <div class="upload-button">
-                    Upload &nbsp; <i class="fa fa-upload fa-2x" style="align-self: flex-end"></i>
-                </div>
-
+<script type="text/ng-template" id="calendar.html">
+    <div class="calendar">
+        <div class="calendar-banner" ng-class="{small:!calendar.img}">
+            <div class="banner-overlay">
+                <img src="http://patrickbeser.com/img/portrait-2015.jpg" alt="" ng-if="calendar.img">
+                {{calendar.heading}}
+                <div class="sub" ng-if="calendar.subheading">{{calendar.subheading}}</div>
             </div>
 
-            <div class="documents-list">
-                <div class="doc">
-                    <i class="fa fa-folder"></i>
-                    <div>Company Media</div>
-                </div>
 
-                <div class="doc">
-                    <i class="fa fa-file-text"></i>
-                    <div>CV.pdf</div>
-                </div>
-
-                <div class="doc">
-                    <i class="fa fa-file-text"></i>
-                    <div>Offer Letter.pdf</div>
-                    <div class="signed"><i class="fa fa-check"></i> &nbsp; signed</div>
-                </div>
-
-                <div class="doc">
-                    <i class="fa fa-file-text"></i>
-                    <div>Company Structure.pdf</div>
-                </div>
-                <div class="doc">
-                    <i class="fa fa-play-circle"></i>
-                    <div>Company Intro Video.mpg</div>
-                </div>
-
-
-
-            </div>
         </div>
     </div>
 </script>
 <script type="text/ng-template" id="header.html">
     <div class="header" ng-class="{active:header.isVisible()}">
         <div class="container" style="text-align: center">
-            <i class="fa fa-angle-left pull-left back-arrow" onclick="javascript:history.back();"
+            <i class="fa fa-angle-left pull-left back-arrow"
+               onclick="javascript:history.back();"
+               ng-class="{active:header.isBack()}"
             ></i>
 
             <span ui-sref="home" style="cursor: pointer">
@@ -165,7 +126,7 @@
             </span>
 
 
-            <i class="fa fa-bars pull-right" style="font-size: 20px;cursor: pointer;"></i>
+            <i class="fa fa-bars pull-right" ng-click="header.showSidebar()" style="font-size: 20px;cursor: pointer;"></i>
 
             <!--<div class="header-menu">-->
             <!--<div class="menu-item"-->
@@ -179,9 +140,43 @@
 
     </div>
 </script>
+<script type="text/ng-template" id="documents.html">
+    <div class="documents">
+        <div class="container">
+            <div class="documents-upload" ng-hide="documents.signed">
+                <div class="upload-button">
+                    Upload &nbsp; <i class="fa fa-upload"></i>
+                </div>
+                <div class="upload-button">
+                    Share &nbsp; <i class="fa fa-share-alt"></i>
+                </div>
+
+            </div>
+
+            <div ng-transclude="docsList">
+
+            </div>
+
+        </div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="doc.html">
+
+    <i class="fa fa-{{doc.icon}}"></i>
+    <div>{{doc.name}}</div>
+    <div class="signed" ng-if="doc.signed">
+        <div class="fa-stack fa-lg">
+            <i class="fa fa-certificate fa-stack-2x"></i>
+            <i class="fa fa-check fa-stack-1x"></i>
+        </div>
+        &nbsp; signed
+    </div>
+
+    <div class="doc-content" ng-transclude="docContent"></div>
+</script>
 <script type="text/ng-template" id="hero.html">
     <div class="hero">
-        <!--<div class="hero-banner" style="background-image: url('{{hero.img}}')">-->
         <div class="hero-banner" ng-class="{small:!hero.img}">
             <div class="banner-overlay">
                 <img src="http://patrickbeser.com/img/portrait-2015.jpg" alt="" ng-if="hero.img">
@@ -221,10 +216,65 @@
         </div>
     </div>
 </script>
-<script type="text/ng-template" id="content.html">
-    <div class="content">
-        <div class="container">
-            <div ng-transclude="content"></div>
+<script type="text/ng-template" id="new.html">
+    <div class="new">
+        <h1>Add User</h1>
+        <div class="new-window">
+            <h3>First Name</h3>
+            <input type="text" placeholder="John" ng-model="new.firstName">
+
+            <h3>Last Name</h3>
+            <input type="text" placeholder="Smith" ng-model="new.lastName">
+
+            <h3>Email</h3>
+            <input type="text" placeholder="example@example.com" ng-model="new.email">
+
+            <h3>Job Description</h3>
+            <input type="text" placeholder="Java Developer" ng-model="new.role" ng-enter="new.addUser()">
+
+            <div class="add-user" ng-click="new.addUser()">Add Candidate &nbsp; <i class="fa fa-check"></i></div>
+
+        </div>
+
+        <div class="users-add">
+
+        </div>
+    </div>
+</script>
+<script type="text/ng-template" id="sidebar.html">
+    <div class="sidebar-bg" ng-class="{active:sidebar.isActive()}" ng-click="sidebar.hide()"></div>
+
+    <div class="sidebar" ng-class="{active:sidebar.isActive()}">
+        <div class="sidebar-header">
+            <div class="close-sidebar" ng-click="sidebar.hide()">
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+
+        <div class="sidebar-items">
+            <div class="sidebar-item" ui-sref="home"><i class="fa fa-home"></i> Home</div>
+            <div class="sidebar-item"><i class="fa fa-cog"></i> My Details</div>
+            <div class="sidebar-item" ui-sref="splash"><i class="fa fa-sign-out"></i> Logout</div>
+        </div>
+
+    </div>
+</script>
+<script type="text/ng-template" id="splash.html">
+    <div class="splash" ng-class="{active:splash.isActive()}">
+        <div class="splash-header">
+            <img src="public/svg/pen.svg" alt="" style="height: 60px;">
+            Insignio</div>
+        <div class="splash-form">
+            <div class="form-label">
+                <input type="text" class="form-input" placeholder="Your User" ng-model="splash.user" ng-enter="splash.validate()">
+                <div class="form-line"></div>
+                <input type="password" class="form-input" placeholder="Your Password" ng-model="splash.pass" ng-enter="splash.validate()">
+
+                <div class="form-btn" ng-click="splash.validate()">Login</div>
+
+                <div class="form-forgot">Forgot Password?</div>
+
+            </div>
         </div>
     </div>
 </script>
@@ -259,16 +309,11 @@
 
             </div>
         </div>
-    </div>
-</script>
-<script type="text/ng-template" id="about-screen.html">
-    <div screen="about">
 
-        <!-- one way pass values to component -->
-        <hero-item
-                img="https://unsplash.it/1200/500/?random&123"
-                heading="About Angular Base"
-        ></hero-item>
+        <div class="users-add">
+            <div class="add-user" ui-sref="new">New Candidate &nbsp; <i class="fa fa-user-plus"></i></div>
+
+        </div>
     </div>
 </script>
 <script type="text/ng-template" id="verify-id.html">
@@ -290,7 +335,15 @@
 
             <div class="verify-item">
                 <div style="position: relative" ng-if="verify.getImages()[1]">
-                    <img ng-src="{{verify.getImages()[1]}}">
+                    <fake-loader></fake-loader>
+                    <div class="fake-loader-1">
+                        <h2>
+                            <p>
+                                Verifying... ID <br> <i class="fa fa-spin fa-cog" style="line-height: inherit"></i>
+                            </p>
+                        </h2>
+                    </div>
+                    <img class="fake-loader-2" style="display: none" ng-src="{{verify.getImages()[1]}}">
                 </div>
 
                 <div ng-if="!verify.getImages()[1]" class="item-msg">
@@ -314,7 +367,98 @@
                 subheading="Powered by Oracle Cloud"
         ></hero-item>
 
-        <documents-item></documents-item>
+        <documents-item>
+            <docs-list>
+                <div ng-hide="isRecruiter()">
+                    <div class="documents-list">
+                        <div class="list-title">Your Docs</div>
+
+                        <doc icon="folder" name="Candidate">
+                            <doc-content>
+                                <doc icon="file-text" name="CV.pdf"></doc>
+                                <doc icon="file-text" name="Offer Letter.pdf" signed="true"></doc>
+                                <doc icon="file-text" name="Pension Form.pdf" signed="true"></doc>
+                                <doc icon="file-text" name="P46.pdf" signed="true"></doc>
+                            </doc-content>
+                        </doc>
+
+                        <doc icon="folder" name="Company">
+                            <doc-content>
+                                <doc icon="file-text" name="Company Structure.pdf"></doc>
+                                <doc icon="play-circle" name="Company Intro Video.mpg"></doc>
+                            </doc-content>
+                        </doc>
+
+                        <doc icon="file-text" name="Interview Tips.pdf"></doc>
+                        <doc icon="file-text" name="Refer A Friend.pdf"></doc>
+                    </div>
+                </div>
+
+
+                <div ng-show="isRecruiter()">
+                    <div class="documents-list">
+                        <div class="list-title">Shared Docs</div>
+                        <doc icon="folder" name="Candidate">
+                            <doc-content>
+                                <doc icon="file-text" name="CV.pdf"></doc>
+                                <doc icon="file-text" name="Offer Letter.pdf" signed="true"></doc>
+                                <doc icon="file-text" name="Pension Form.pdf" signed="true"></doc>
+                                <doc icon="file-text" name="P46.pdf" signed="true"></doc>
+                            </doc-content>
+                        </doc>
+
+                        <doc icon="folder" name="Company">
+                            <doc-content>
+                                <doc icon="file-text" name="Company Structure.pdf"></doc>
+                                <doc icon="play-circle" name="Company Intro Video.mpg"></doc>
+                            </doc-content>
+                        </doc>
+
+                        <doc icon="file-text" name="Interview Tips.pdf"></doc>
+                        <doc icon="file-text" name="Refer A Friend.pdf"></doc>
+                    </div>
+
+                    <div class="documents-list">
+                        <div class="list-title">Your Docs</div>
+                        <doc icon="folder" name="Companies">
+                            <doc-content>
+                                <doc icon="folder" name="Nike">
+                                    <doc-content>
+                                        <doc icon="file-text" name="Company Structure.pdf"></doc>
+                                        <doc icon="play-circle" name="Company Intro Video.mpg"></doc>
+                                    </doc-content>
+                                </doc>
+                                <doc icon="folder" name="Aviva"></doc>
+                                <doc icon="folder" name="T-Mobile"></doc>
+                                <doc icon="folder" name="Oracle"></doc>
+                            </doc-content>
+                        </doc>
+
+                        <doc icon="folder" name="Standard Docs">
+                            <doc-content>
+                                <doc icon="file-text" name="CV Template.pdf"></doc>
+                                <doc icon="file-text" name="Offer Letter.pdf"></doc>
+                                <doc icon="file-text" name="Interview Tips.pdf"></doc>
+                                <doc icon="file-text" name="Refer A Friend.pdf"></doc>
+                            </doc-content>
+                        </doc>
+                    </div>
+                </div>
+            </docs-list>
+        </documents-item>
+    </div>
+</script>
+<script type="text/ng-template" id="home-screen.html">
+    <div screen="home">
+
+        <hero-item
+                heading="Your Candidates"
+        ></hero-item>
+
+        <users-item
+                users="getUsers()"
+        ></users-item>
+
     </div>
 </script>
 <script type="text/ng-template" id="job-screen.html">
@@ -333,17 +477,31 @@
 
     </div>
 </script>
-<script type="text/ng-template" id="home-screen.html">
-    <div screen="home">
+<script type="text/ng-template" id="new-screen.html">
+    <div screen="new">
+
+        <new-item></new-item>
+    </div>
+</script>
+<script type="text/ng-template" id="signed-docs-screen.html">
+    <div screen="verify">
 
         <hero-item
-                heading="Candidates"
+                heading="Signed Documents"
+                subheading="Powered by Oracle Cloud"
         ></hero-item>
 
-        <users-item
-                users="getUsers()"
-        ></users-item>
+        <documents-item signed="true">
+            <docs-list>
+                <div class="documents-list">
+                    <div class="list-title">Your Docs</div>
 
+                    <doc icon="file-text" name="Offer Letter.pdf" signed="true"></doc>
+                    <doc icon="file-text" name="Pension Form.pdf" signed="true"></doc>
+                    <doc icon="file-text" name="P46.pdf" signed="true"></doc>
+                </div>
+            </docs-list>
+        </documents-item>
     </div>
 </script>
 <script type="text/ng-template" id="splash-screen.html">
@@ -377,8 +535,8 @@
         <verify-id-item></verify-id-item>
     </div>
 </script>
-<script src="public/lib.js?latest"></script>
-<script src="public/app.js?latest"></script>
+<script src="public/lib.js?12345"></script>
+<script src="public/app.js?12345"></script>
 
 </body>
 </html>

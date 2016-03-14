@@ -7,3 +7,7 @@ app.directive('ngEnter', () => (scope, element, attrs) => {
         event.preventDefault();
     });
 });
+
+app.run(($state, $timeout) => {
+    //$timeout(() => $state.transitionTo('splash', {}, {location: "replace"}));
+});

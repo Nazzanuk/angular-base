@@ -2,9 +2,10 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 
     //this controls the animations for each transition
     var resolve = {
-        timeout: ($timeout) => {
+        timeout: ($timeout, State) => {
             $('[screen]').removeClass('active');
             $timeout(() => $('[screen]').addClass('active'), 350);
+            State.hideSidebar();
             return $timeout(300);
         }
     };
@@ -31,10 +32,22 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
             controller: 'UserScreen',
             resolve
         })
+        .state('new', {
+            url: "/new",
+            templateUrl: "new-screen.html",
+            controller: 'NewScreen',
+            resolve
+        })
         .state('documents', {
             url: "/user/:id/documents",
             templateUrl: "documents-screen.html",
             controller: 'DocumentsScreen',
+            resolve
+        })
+        .state('signedDocs', {
+            url: "/user/:id/signed-docs",
+            templateUrl: "signed-docs-screen.html",
+            controller: 'SignedDocsScreen',
             resolve
         })
         .state('job', {

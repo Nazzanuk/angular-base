@@ -1,0 +1,25 @@
+<script type="text/ng-template" id="new.html">
+    <div class="new">
+        <h1>Add User</h1>
+        <div class="new-window">
+            <h3>First Name</h3>
+            <input type="text" placeholder="John" ng-model="new.firstName">
+
+            <h3>Last Name</h3>
+            <input type="text" placeholder="Smith" ng-model="new.lastName">
+
+            <h3>Email</h3>
+            <input type="text" placeholder="example@example.com" ng-model="new.email">
+
+            <h3>Job Description</h3>
+            <input type="text" placeholder="Java Developer" ng-model="new.role" ng-enter="new.addUser()">
+
+            <div class="add-user" ng-click="new.addUser()">Add Candidate &nbsp; <i class="fa fa-check"></i></div>
+
+        </div>
+
+        <div class="users-add">
+
+        </div>
+    </div>
+</script>

@@ -5,11 +5,11 @@
             Insignio</div>
         <div class="splash-form">
             <div class="form-label">
-                <input type="text" class="form-input" placeholder="Your Email">
+                <input type="text" class="form-input" placeholder="Your User" ng-model="splash.user" ng-enter="splash.validate()">
                 <div class="form-line"></div>
-                <input type="password" class="form-input" placeholder="Your Password">
+                <input type="password" class="form-input" placeholder="Your Password" ng-model="splash.pass" ng-enter="splash.validate()">
 
-                <div class="form-btn" ui-sref="home">Login</div>
+                <div class="form-btn" ng-click="splash.validate()">Login</div>
 
                 <div class="form-forgot">Forgot Password?</div>
 

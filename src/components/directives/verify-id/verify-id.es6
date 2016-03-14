@@ -14,7 +14,8 @@ app.component('verifyIdItem', {
             fileReader.readAsDataURL(files[0]);
         };
 
-        var init = () => {};
+        var init = () => {
+        };
 
         init();
 
@@ -25,3 +26,20 @@ app.component('verifyIdItem', {
         });
     }
 });
+app.component('fakeLoader', {
+    controller: function ($timeout) {
+
+        var init = () => {
+            $timeout(() => {
+                $('.fake-loader-1').hide();
+                $('.fake-loader-2').show();
+            }, 5000);
+        };
+
+        init();
+
+        _.extend(this, {});
+    }
+});
+
+

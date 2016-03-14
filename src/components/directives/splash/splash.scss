@@ -7,7 +7,7 @@ splash-item {
     right: 0;
     //z-index: -1;
     //background: #4ca3ce;
-    background: linear-gradient(45deg, $primary 0%, $secondary 100%);
+    background: linear-gradient(45deg, $primary 20%, $secondary 80%);
 
     display: flex;
     align-content: center;
@@ -22,14 +22,14 @@ splash-item {
       font-size: 70px;
       position: relative;
 
-      transition: 1.5s ease-out;
+      transition: 0.75s ease-out;
       opacity: 0;
       top: 30px;
       //left: -60px;
 
       img {
         position: relative;
-        transition: 1.5s ease-out;
+        transition: 0.75s ease-out;
         opacity: 0;
         left: -60px;
       }
@@ -41,8 +41,8 @@ splash-item {
       max-width: calc(100% - 30px);
       position: relative;
 
-      transition: 1.5s;
-      transition-delay: 1.0s;
+      transition: 0.75s;
+      transition-delay: 0.5s;
       opacity: 0;
       color: rgba(255, 255, 255, 0.8);
       text-align: center;
@@ -83,7 +83,7 @@ splash-item {
         text-align: center;
         margin-top: 30px;
         color: mix($primary, $secondary);
-        font-weight: 900;
+        font-weight: 700;
         line-height: 50px;
         cursor: pointer;
         transition: .3s;

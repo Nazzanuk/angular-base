@@ -1,4 +1,4 @@
-app.controller('DocumentsScreen', ($scope, $stateParams, State) => {
+app.controller('SignedDocsScreen', ($scope, $stateParams, State) => {
 
     var init = () => {};
 

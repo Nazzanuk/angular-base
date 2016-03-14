@@ -1,7 +1,8 @@
 choice-item {
   .choice {
     .choice-list {
-      background: white;
+      //background: white;
+      //background: rgba(255,255,255,0.97);
       //border-right: 1px solid #eee;
       //border-bottom: 1px solid #eee;
       position: relative;
@@ -10,7 +11,7 @@ choice-item {
       flex-wrap: wrap;
       margin: -15px 0px 15px;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      border-radius: 8px;
+      border-radius: 3px;
       overflow: hidden;
 
       .list-item {
@@ -18,6 +19,7 @@ choice-item {
         //border-top: 1px solid #eee;
         //border-left: 1px solid #eee;
         background: white;
+        background: rgba(255,255,255,0.97);
         padding-top: calc(100% / 3);
         position: relative;
 
@@ -31,7 +33,7 @@ choice-item {
         }
 
         &:nth-child(2n) {
-          background: #f7f7f7;
+          background: transparentize(#f7f7f7, 0.1);
         }
 
         &:hover {
@@ -55,13 +57,14 @@ choice-item {
           font-size: 12px;
           font-weight: 700;
           text-transform: uppercase;
-          color: #333;
+          color: #666;
+          //color: $primary;
           border-bottom: 3px solid transparent;
           transition: .3s;
 
           &:hover {
-            border-bottom: 3px solid $primary;
-            color: $primary;
+            //border-bottom: 3px solid $primary;
+            //color: $primary;
           }
 
           @media (max-width: 450px) {

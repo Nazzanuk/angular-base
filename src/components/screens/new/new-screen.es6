@@ -1,4 +1,4 @@
-app.controller('AboutScreen', ($element, $timeout, $scope) => {
+app.controller('NewScreen', ($element, $timeout, $scope) => {
 
     var init = () => {
         //$timeout(() => $element.find('[screen]').addClass('active'), 50);

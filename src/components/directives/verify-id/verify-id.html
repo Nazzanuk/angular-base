@@ -17,7 +17,15 @@
 
             <div class="verify-item">
                 <div style="position: relative" ng-if="verify.getImages()[1]">
-                    <img ng-src="{{verify.getImages()[1]}}">
+                    <fake-loader></fake-loader>
+                    <div class="fake-loader-1">
+                        <h2>
+                            <p>
+                                Verifying... ID <br> <i class="fa fa-spin fa-cog" style="line-height: inherit"></i>
+                            </p>
+                        </h2>
+                    </div>
+                    <img class="fake-loader-2" style="display: none" ng-src="{{verify.getImages()[1]}}">
                 </div>
 
                 <div ng-if="!verify.getImages()[1]" class="item-msg">

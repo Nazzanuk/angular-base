@@ -3,19 +3,21 @@ verify-id-item {
     display: flex;
     flex-direction: column;
     margin-top: -15px;
+    padding-bottom: 15px;
     //padding: 15px;
 
     .verify-item {
       //flex: 0 0 calc(100% - 45px);
       flex: 1;
       background: white;
+      background: rgba(255, 255, 255, 0.97);
       position: relative;
       //display: flex;
       //flex-direction: row;
       //flex-wrap: wrap;
       margin-top: 15px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
       overflow: hidden;
       padding: 15px;
 
@@ -27,7 +29,6 @@ verify-id-item {
         padding: 0 30px;
       }
 
-
       &:first-of-type {
         margin-top: 0px;
       }
@@ -38,8 +39,8 @@ verify-id-item {
 
       label {
         -webkit-appearance: none;
-        -moz-appearance:    none;
-        appearance:         none;
+        -moz-appearance: none;
+        appearance: none;
 
         background: $primary;
         color: white;
@@ -59,6 +60,8 @@ verify-id-item {
         margin-bottom: 10px;
         border-radius: 3px;
         max-width: 50%;
+        max-width: 100%;
+        max-height: 200px;
         margin: 15px 0 30px;
 
       }

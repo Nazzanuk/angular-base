@@ -1,0 +1,68 @@
+new-item {
+  .new {
+    padding: 65px 15px 80px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, $primary 20%, $secondary 80%);
+    color: white;
+    text-align: center;
+
+    .add-user {
+      background: $primary;
+      margin-top: 15px;
+      line-height: 40px;
+      border-radius: 3px;
+      color: white;
+      text-align: center;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .3s;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 15px 0;
+      line-height: 1;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin: 0;
+      padding: 20px 0 0;
+      color:$primary;
+      font-weight: 700;
+      font-size: inherit;
+    }
+
+    .new-window {
+      text-align: left;
+      flex: 1;
+      background: white;
+      background: rgba(255, 255, 255, 0.97);
+      position: relative;
+      //display: flex;
+      //flex-direction: row;
+      //flex-wrap: wrap;
+      margin-top: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      overflow: hidden;
+      padding: 0 15px 15px;
+
+      input {
+        margin: 5px 0 0;
+        color:#212121;
+        width: 100%;
+        background: none;
+        border: none;
+        padding: 0;
+        //padding-bottom: 5px;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        outline: none;
+        font-weight: 400;
+        border-radius: 0;
+        line-height: 40px;
+      }
+    }
+  }
+}
