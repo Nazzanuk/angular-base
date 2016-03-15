@@ -1,4 +1,4 @@
-app.controller('HomeScreen', ($element, $timeout, $scope, Users) => {
+app.controller('HomeScreen', ($element, $timeout, $scope) => {
 
     var init = () => {
         //$timeout(() => $element.find('[screen]').addClass('active'), 50);
@@ -7,7 +7,7 @@ app.controller('HomeScreen', ($element, $timeout, $scope, Users) => {
     init();
 
     _.extend($scope, {
-        getUsers: Users.getUsers
+
     });
 });
 

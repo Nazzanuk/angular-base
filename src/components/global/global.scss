@@ -1,51 +1,19 @@
-$body: #444444;
-$primary: #2d84c4;
-$secondary: #639e42;
-$light: #EEF7FF;
-
-* {
-
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-
-  -webkit-tap-highlight-color:rgba(90,90,90,0.1);
-}
+$body: #212121;
+$primary: #0091de;
+$secondary: #454545;
 
 html, body {
   font-family: 'Source Sans Pro', sans-serif;
   overflow-x: hidden;
-  //background: $body;
-  background: $light;
-
+  background: rgb(244, 244, 244);
 }
 
 input, textarea {
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
 }
 
 body {
   min-width: 320px;
-  //font-size: 16px;
-  font-weight: 400;
-  background: $light;
-}
-
-h1, h2, h3 {
-  font-weight: 300;
 }
 
 @mixin mobile {
@@ -66,21 +34,14 @@ h1, h2, h3 {
   }
 }
 
-.container {
-  max-width: 600px;
-}
-
 .fa {
   line-height: inherit;
 }
 
 [screen] {
   opacity: 0;
-  //padding-top: 50px;
+  padding-top: 50px;
   transition: .3s;
-  min-height: 100vh;
-  background: #f7f7f7;
-  background: $light;
 
   &.active {
     opacity: 1;

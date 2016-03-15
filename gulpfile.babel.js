@@ -43,8 +43,6 @@ gulp.task("gen-html", () =>
             "src/components/**/!(footer)*.html",
             "src/components/footer/footer.html"
         ])
-        .pipe(concat("index.html"))
-        .pipe(gulp.dest('release'))
         .pipe(concat("index.ejs"))
         .pipe(gulp.dest('server/views'))
 );
@@ -81,7 +79,6 @@ gulp.task('gen-lib-js', () =>
             'src/bower-components/jquery/dist/jquery.min.js',
             'src/bower-components/angular/angular.min.js',
             'src/bower-components/angular-ui-router/release/angular-ui-router.min.js',
-            'src/bower-components/ngtouch/build/ngTouch.min.js',
             'src/bower-components/lodash/dist/lodash.min.js'
         ])
         .pipe(concat('lib.js'))

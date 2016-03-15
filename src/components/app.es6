@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'ngTouch']);
+var app = angular.module('app', ['ui.router']);
 
 app.directive('ngEnter', () => (scope, element, attrs) => {
     element.bind('keypress', (event) => {
@@ -6,8 +6,4 @@ app.directive('ngEnter', () => (scope, element, attrs) => {
         scope.$apply(() => scope.$eval(attrs.ngEnter, {$event: event}));
         event.preventDefault();
     });
-});
-
-app.run(($state, $timeout) => {
-    //$timeout(() => $state.transitionTo('splash', {}, {location: "replace"}));
 });

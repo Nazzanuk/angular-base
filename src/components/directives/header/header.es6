@@ -4,21 +4,16 @@ app.component('headerItem', {
     bindings: {
         img: '@'
     },
-    controller: function (Menu, $state, $timeout, State) {
+    controller: function (Menu) {
 
-        var init = () => {
-            $timeout(() => $('body').addClass('active'));
-        };
+        var init = () => {};
 
         init();
 
         _.extend(this, {
-            isVisible: () => !(!$state.current.name || $state.is("splash")),
-            isBack: () => !(!$state.current.name || $state.is("home")),
             getPages: Menu.getPages,
             setPage: Menu.setPage,
-            isCurrentPage: Menu.isCurrentPage,
-            showSidebar: State.showSidebar
+            isCurrentPage: Menu.isCurrentPage
         });
     }
 });

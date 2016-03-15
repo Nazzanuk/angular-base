@@ -6,38 +6,12 @@ header-item {
     right: 0;
     height: 50px;
     line-height: 50px;
-    z-index: 100;
-    transform: translateY(-60px);
 
-    //background: white;
-    background: rgba(0, 0, 0, 0.4);
-    //box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    transition: .6s ease-out;
-    color: white;
-    -webkit-backdrop-filter: blur(5px);
-
-    &.active {
-      transform: translateY(0px);
-    }
-
-    .back-arrow {
-      font-size: 20px;
-      cursor: pointer;
-      width: 45px;
-      text-align: center;
-      margin-left: -15px;
-      transform: translateX(-50px);
-      transition: .3s;
-
-      &.active {
-        transform: translateX(0);
-      }
-    }
+    background: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
 
     .header-menu {
-      position: absolute;
-      right: 0;
-      top: 0;
+      float: right;
 
       .menu-item {
         float: left;
@@ -52,7 +26,7 @@ header-item {
         }
 
         &.active {
-          border-bottom: 2px solid $body;
+          border-bottom: 2px solid $primary;
         }
       }
     }

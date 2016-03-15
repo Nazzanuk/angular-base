@@ -1,0 +1,27 @@
+content-item {
+  .content {
+    font-size: 16px;
+    font-weight: 300;
+
+    h1, h2, h3, h4, p {
+      margin: 10px 0 0;
+      padding: 10px 0 0;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 100;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 300;
+
+      a {
+        font-weight: 600;
+        color: $primary;
+      }
+    }
+
+  }
+}

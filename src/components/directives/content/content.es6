@@ -1,9 +1,10 @@
-app.component('heroItem', {
-    templateUrl: 'hero.html',
-    controllerAs: 'hero',
+app.component('contentItem', {
+    templateUrl: 'content.html',
+    controllerAs: 'content',
+    transclude:{
+        content:'?content'
+    },
     bindings: {
-        img: '@',
-        heading: '@'
     },
     controller: function ($element, $timeout) {
 
