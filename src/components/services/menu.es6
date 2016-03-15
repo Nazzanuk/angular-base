@@ -2,9 +2,9 @@ app.service('Menu', ($state, $stateParams, $timeout) => {
 
     var currentPage,
         pages = [
-        {name: "Home", slug: "home"},
-        {name: "About", slug: "about"}
-    ];
+            {name: "Home", slug: "home"},
+            {name: "About", slug: "about"}
+        ];
 
     var setPage = (slug) => {
         currentPage = slug;

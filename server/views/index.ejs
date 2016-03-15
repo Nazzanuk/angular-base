@@ -29,6 +29,13 @@
 <div ui-view></div>
 
 
+<script type="text/ng-template" id="content.html">
+    <div class="content">
+        <div class="container">
+            <div ng-transclude="content"></div>
+        </div>
+    </div>
+</script>
 <script type="text/ng-template" id="header.html">
     <div class="header">
         <div class="container">
@@ -44,13 +51,6 @@
         </div>
 
 
-    </div>
-</script>
-<script type="text/ng-template" id="content.html">
-    <div class="content">
-        <div class="container">
-            <div ng-transclude="content"></div>
-        </div>
     </div>
 </script>
 <script type="text/ng-template" id="hero.html">
@@ -86,8 +86,8 @@
                 <h1>What is this?</h1>
 
                 <p>
-                    Angular 1.5 base is a project developed by
-                    <a href="#">Nathan Nelson</a> to help get Java n00bs get started with JavaScript structure and single page apps in Angular.
+                    Angular base is a project developed by
+                    <a href="#">Nathan Nelson</a> to help get Java n00bs get started with JavaScript, ES6 and single page app structure in Angular 1.5.
                 </p>
             </content>
         </content-item>

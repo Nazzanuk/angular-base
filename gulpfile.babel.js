@@ -4,7 +4,6 @@ var gulp = require('gulp'),
     mocha = require('gulp-mocha'),
     concat = require("gulp-concat"),
     babel = require("gulp-babel"),
-    order = require("gulp-order"),
     sass = require("gulp-sass"),
     shell = require('gulp-shell'),
     autoprefixer = require('gulp-autoprefixer');
