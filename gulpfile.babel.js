@@ -23,13 +23,13 @@ gulp.task("default", () => gulp.start([
     'gen-lib-css'
 ]));
 
-gulp.task('dev', ['start-server', 'default'], () => {
+gulp.task('dev', ['default'], () => {
     gulp.watch([
         'src/**/*'
     ], ['default']);
 });
 
-gulp.task('start-server', shell.task(['sh start-server.sh']));
+//gulp.task('start-server', shell.task(['sh start-server.sh']));
 
 gulp.task('copy-public', () =>
     gulp.src(['src/public/**/*'])
@@ -44,6 +44,8 @@ gulp.task("gen-html", () =>
         ])
         .pipe(concat("index.ejs"))
         .pipe(gulp.dest('server/views'))
+        .pipe(concat("index.html"))
+        .pipe(gulp.dest('release'))
 );
 
 gulp.task('gen-js', () =>
