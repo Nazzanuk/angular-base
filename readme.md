@@ -10,7 +10,5 @@ This should be all you need to start the server at http://localhost:4000.
 
 You may need to install the following globally as prerequisites:
 
-`npm install -g forever`   
-`npm install -g bower`   
-`npm install -g gulp`   
+`npm install -g forever bower gulp`   
 
