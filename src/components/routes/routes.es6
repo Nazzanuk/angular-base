@@ -14,23 +14,21 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) => {
 
     // Now set up the states
     $stateProvider
-        .state('home', {
-            url: "/",
-            templateUrl: "home-screen.html",
-            resolve
-        })
-        .state('about', {
-            url: "/about",
-            templateUrl: "about-screen.html",
-            resolve
-        })
-        .state('other', {
-            url: "/other",
-            templateUrl: "other-screen.html",
-            //controller: "BootcampScreen",
-            resolve
-        });
+        .state(new Route('home', "/", resolve))
+        .state(new Route('about', "/about", resolve));
 
     //use real urls instead of hashes
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
 });
+
+class Route {
+    constructor(name, url, resolve) {
+        _.extend(this, {
+            name,
+            url,
+            templateUrl: `${_.kebabCase(name)}-screen.html`,
+            controller: _.upperFirst(_.camelCase(`${name}Screen`)),
+            resolve
+        });
+    }
+}
